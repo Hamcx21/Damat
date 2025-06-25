@@ -1,38 +1,189 @@
+/* Custom animations and styles for DAMAT website */
+
 .App {
-    text-align: center;
+  text-align: left;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Math symbols floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Custom button hover effects */
+.btn-game {
+  position: relative;
+  overflow: hidden;
 }
 
-.App-link {
-    color: #61dafb;
+.btn-game::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.btn-game:hover::before {
+  left: 100%;
+}
+
+/* Math symbols background pattern */
+.math-bg {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 193, 7, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 50%, rgba(220, 53, 69, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 40% 20%, rgba(13, 110, 253, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 60% 80%, rgba(25, 135, 84, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px, 60px 60px, 70px 70px, 80px 80px;
+}
+
+/* Playful card hover effects */
+.game-card {
+  transition: all 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-10px) rotate(1deg);
+}
+
+/* Math equation styling */
+.math-equation {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Dice animation */
+@keyframes dice-roll {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dice-animate {
+  animation: dice-roll 2s ease-in-out infinite;
+}
+
+/* Number counter animation */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.counter-animate {
+  animation: count-up 0.8s ease-out;
+}
+
+/* Responsive text scaling */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff5252, #26c6da);
+}
+
+/* Loading spinner for async content */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #ff6b6b;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Game board styling */
+.game-board {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Educational theme colors */
+.text-math-red { color: #dc3545; }
+.text-math-blue { color: #0d6efd; }
+.text-math-green { color: #198754; }
+.text-math-yellow { color: #ffc107; }
+.text-math-purple { color: #6f42c1; }
+
+.bg-math-red { background-color: #dc3545; }
+.bg-math-blue { background-color: #0d6efd; }
+.bg-math-green { background-color: #198754; }
+.bg-math-yellow { background-color: #ffc107; }
+.bg-math-purple { background-color: #6f42c1; }
+
+/* Interactive elements */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Mathematical symbols decoration */
+.math-decoration::before {
+  content: "∑ ∏ ∫ ∞ π √ ± ÷ × − + = ≠ ≈ ≤ ≥";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.03);
+  z-index: -1;
+  overflow: hidden;
+  line-height: 3rem;
+  word-wrap: break-word;
 }
